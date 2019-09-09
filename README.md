@@ -1,35 +1,18 @@
-# pyclust
-This repo reproduces the results in "Pyclust: Automatic Gaussian Mixture Modeling in Python"
-
-
-Directory:
-subset_experiments
-
-These scripts/files reproduce figures 1 and 2
-
-The csv files that start with "idxs_" are the random subsets of the datasets that were used in the experiments.
-
-All other csv files and images can be reproduced with the scripts
-
-First, run pyclust_subset_experiments.py, mclust_subset_experiments.r, and graspyclust_subset_experiments.py. \
-These will generate csv files with the results of each method.
-
-Then, run compare_experiments.py to plot the results.
+# AutoGMM
+This repo reproduces the results in "AutoGMM: Automatic Gaussian Mixture Modeling in Python" (https://arxiv.org/abs/1909.02688)
 
 
 
-complete_experiments
+#Directories
+## complete_experiments
+These files reproduce Table 2, Figures 1-3, and Figure 5. They run the clustering algorithms on the complete datasets. Instructions within
 
-There is a script for each clustering algorithm. \
-Each script reproduces the respective results for Table 2, the Appendix, \
-and in the case of the Drosophila data, Figure 3
+##subset_experiments
+These files reproduce Figure 4. They run the clustering algorithms on the subsets of the data. Instructions within
 
+##option_runtimes
 
-figure_4
+These files reproduce Figure 6.
 
-These scripts reproduce figure 4
-
-The data directory contains the synthetic data used for this experiment (created by make_data.py)
-
-The experiments can be reproduced by running pyclust_runtime.py, graspyclust_runtime.py, and mclust_runtime.r. \
-These scripts save the runtime data then show_runtimes.py plots them.
+**brute_cluser_graspyclust.py** - implementation of graspyclust \
+**make_gmix.py** - script that was used to make data/synthetic.csv
