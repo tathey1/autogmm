@@ -1,0 +1,4 @@
+{
+    "python.formatting.provider": "black",
+    "python.pythonPath": "C:\\Users\\Thomas Athey\\Miniconda3\\python.exe"
+}
