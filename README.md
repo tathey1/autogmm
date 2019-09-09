@@ -15,4 +15,5 @@ These files reproduce Figure 4. They run the clustering algorithms on the subset
 These files reproduce Figure 6. Instructions within.
 
 **brute_cluser_graspyclust.py** - implementation of graspyclust \
-**make_gmix.py** - script that was used to make data/synthetic.csv
+**make_gmix.py** - script that was used to make data/synthetic.csv \
+**./data/** - contains the datasets that was used in the paper

@@ -5,13 +5,12 @@ import numpy as np
 import random
 random.seed(0)
 
-base = 10
+base = 40
 factor = 2
-num_sets = 22
+exponent = 14 #in the paper, we had the exponent range from 1 to 15
 
-ns = base*np.power(factor,np.arange(num_sets))
+n = base*np.power(factor,exponent)
 
 
-for n in ns:
-    file = ".\data\\" + str(n) + ".csv"
-    _ = make_gmix_data(n,file)
+file = ".\data\\" + str(n) + ".csv"
+_ = make_gmix_data(n,file)

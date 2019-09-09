@@ -11,7 +11,7 @@ ks = [i for i in range(2,6)]
 
 base = 40
 factor = 2
-num_sets = 16
+num_sets = 14 #indicates the maximally sized dataset (16 in the paper)
 output_file = 'autogmm_option_times.csv'
 
 ns = base*np.power(factor,np.arange(num_sets))
