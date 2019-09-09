@@ -24,6 +24,7 @@ random.seed(0)
 
 #Change this field for different datasets**************************
 dataset = 2 #0-synthetic, 1-BC, 2-drosophila
+#*********************************************************************
 
 if dataset==0:
     ks = [i for i in range(1,21)]

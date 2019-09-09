@@ -6,8 +6,9 @@
 library("mclust")
 setwd(dirname(sys.frame(1)$ofile))
 
-#0-synthetic, 1-BC, 2-drosophila
-dataset = 2 #****************************Change this to view different datasets
+#****************************Change this to view different datasets
+dataset = 2 #0-synthetic, 1-BC, 2-drosophila
+#*********************************************************************
 
 
 if (dataset==0) {
