@@ -7,3 +7,4 @@ To recreate Figure 4:
 
 **./paper_results/** - Contains the results from Step 1 that were published. If one wishes to recreate exactly Figure 4, copy these csvs into the subset_experiments directory then perform Step 2.
 
+Note: For the R script, users may need to "Set Working Directory" to "Source File Location," for the scripts to find find relative paths correctly.

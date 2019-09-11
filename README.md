@@ -22,6 +22,9 @@ pip install -e .
 
 The algorithm is located in graspy/graspy/cluster/autogmm.py. After autogmm is installed, you can run the scripts below.
 
+To run the R scripts, you will need to install R and the mclust library (we use version 5.4.2 in the paper). We recommend the RStudio IDE https://www.rstudio.com/.
+Users may need to "Set Working Directory" to "Source File Location," for the scripts to find find relative paths correctly.
+
 # Directories
 ## complete_experiments
 These files reproduce Table 2, Figures 1-3, and Figure 5. They run the clustering algorithms on the complete datasets. Instructions within.

@@ -2,6 +2,7 @@
 #First, it shows the clustering, found in the appendix of the paper
 #Then it prints information about the model selected, found in Table 2
 #Lastly, it constructs the bicplot. The bicplot for the drosophila data is found in figure 3
+#Rather than saving the figures, it outputs them on the screen
 
 library("mclust")
 setwd(dirname(sys.frame(1)$ofile))
@@ -46,10 +47,10 @@ ari <- adjustedRandIndex(c,model$classification)
 
 
 plot(first_dim,second_dim,col=colors[model$classification],pch=19,xlab='feature 1',ylab='feature 2',main='mclust clustering') 
-print(paste('model: ',combo))
-print(paste('k: ',k))
-print(paste('bic: ',bic))
-print(paste('ari: ',ari))
+print(paste('Best model: ',combo))
+print(paste('Best k: ',k))
+print(paste('Best BIC: ',bic))
+print(paste('Best ARI: ',ari))
 
 BIC <- mclustBIC(X,ks,verbose=FALSE, modelNames=modelNames)
 

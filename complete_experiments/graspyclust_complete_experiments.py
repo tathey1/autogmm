@@ -76,9 +76,9 @@ c_hat_graspy,best_cov_bic, best_k_bic, best_ari_bic,best_bic = brute_graspy_clus
     covariance_types=['full','tied','diag','spherical'], ks=ks,c_true=c_true)
 
 print('Info for Table:')
-print(best_cov_bic)
-print(best_k_bic)
-print(best_bic)
-print(best_ari_bic)
+print('Best model: ' + best_cov_bic)
+print('Best k: ' + str(best_k_bic))
+print('Best BIC: ' + str(best_bic))
+print('Best ARI: 'str(best_ari_bic))
 print('Making Clustering Plots...')
 make_cluster_plots(x,c_hat_graspy)
