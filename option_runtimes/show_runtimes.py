@@ -1,3 +1,7 @@
+'''
+This script reproduces figure 6 in the paper (fig6.png)
+'''
+
 #%%
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -112,7 +116,7 @@ fontsize=24,fontweight='bold')
 plt.xticks([1e2, 1e4, 1e6],fontsize=20)
 plt.yticks([1e-3, 1, 1e3],fontsize=20)
 plt.legend(prop={'size': 20})
-fname = 'option_runtimes.png'
+fname = 'fig6.png'
 plt.savefig(fname)
 #%%
 

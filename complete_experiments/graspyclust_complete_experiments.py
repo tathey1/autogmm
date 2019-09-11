@@ -1,3 +1,8 @@
+'''
+This script reproduces the graspyclust clusterings in Figures 1-3 of the paper (graspyclust_clustering_dataset*.png)
+Additionally, it outputs the clustering option that was selected, reproducing information in Table 2 of the paper.
+'''
+
 #%%
 #Synthetic
 from graspy.cluster import GaussianCluster

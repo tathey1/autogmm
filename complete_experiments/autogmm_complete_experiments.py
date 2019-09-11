@@ -1,8 +1,9 @@
 '''
-This script shows the results of autogmm on the three datasets
-First, it shows the bicplot, which is included in the paper as Figure 3 for the Drosophila dataset
+This saves figures that show the results of autogmm on the three datasets
+First, it shows the bicplot (autogmm_bicplot_dataset*.png), which is included in the paper as Figure 5 for the Drosophila dataset
 Then, it outputs information about the chosen model, which is in Table 2 in the paper
-Lastly, it shows the true clustering and autogmm clustering which are in the Appendix of the paper
+Lastly, it show the true clustering (true_clustering_dataset*.png) and autogmm clustering (autogmm_clustering_dataset*.png)
+which are in Figures 1-3 of the paper
 '''
 
 #%%
