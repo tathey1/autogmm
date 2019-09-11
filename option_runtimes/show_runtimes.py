@@ -5,7 +5,7 @@ from sklearn.linear_model import LinearRegression
 import numpy as np
 
 
-
+print('Reading AutoGMM results...')
 #Now plot the different pyclust options
 df = pd.read_csv("autogmm_option_times.csv")
 df = df.loc[:,['N','Affinity','Linkage','Covariance_Type','Time']]
@@ -54,7 +54,7 @@ for affinity in df.Affinity.unique():
             plt.plot(N,T,**kwargs)
 
 
-
+print('Reading mclust results...')
 df = pd.read_csv("mclust_option_times.csv")
 df = df.loc[:,['N','Model','Time']]
 
@@ -78,6 +78,8 @@ for model in df.Model.unique():
     plt.plot(N,T,**kwargs)
 
 #graspyclust*****************************************
+
+print('Reading graspyclust results...')
 df = pd.read_csv("graspyclust_option_times.csv")
 df = df.loc[:,['N','Covariance_Type','Time']]
 
@@ -110,6 +112,7 @@ fontsize=24,fontweight='bold')
 plt.xticks([1e2, 1e4, 1e6],fontsize=20)
 plt.yticks([1e-3, 1, 1e3],fontsize=20)
 plt.legend(prop={'size': 20})
-plt.show()
+fname = 'option_runtimes.png'
+plt.savefig(fname)
 #%%
 

@@ -25,6 +25,7 @@ random.seed(0)
 #Change this field for different datasets**************************
 dataset = 2 #0-synthetic, 1-BC, 2-drosophila
 #*********************************************************************
+print('Running AutoGMM on dataset #' + str(dataset))
 
 if dataset==0:
     ks = [i for i in range(1,21)]
@@ -131,8 +132,8 @@ def make_bic_plots(results,best_cov,best_k_bic,best_bic):
     ax0.set_yticklabels(ax0.get_yticks(),fontsize=18)
 
     ax1.set_title(titles[1],fontsize=22,fontweight='bold')
-    #legend = ax1.legend(loc='best',title='Agglomeration\nMethod',fontsize=12)
-    #plt.setp(legend.get_title(),fontsize=14)
+    legend = ax1.legend(loc='best',title='Agglomeration\nMethod',fontsize=12)
+    plt.setp(legend.get_title(),fontsize=14)
 
     ax2.set_title(titles[2],fontsize=22,fontweight='bold')
     ax2.set_xticks(range(0,21,4))
@@ -144,7 +145,8 @@ def make_bic_plots(results,best_cov,best_k_bic,best_bic):
     ax3.set_title(titles[3],fontsize=22,fontweight='bold')
     ax3.set_xticks(range(0,21,4))
     ax3.set_xticklabels(ax3.get_xticks(),fontsize=18)
-    plt.show()
+    fname = './autogmm_bicplot_dataset'+ str(dataset) + '.png'
+    plt.savefig(fname)
 
 def make_cluster_plots(x,c_true,c_hat_autogmm):
     c_list = ['red', 'green', 'blue','orange','purple','yellow','gray']
@@ -157,7 +159,8 @@ def make_cluster_plots(x,c_true,c_hat_autogmm):
     plt.title('True Clustering',fontsize=24,fontweight='bold')
     plt.xticks(fontsize=18)
     plt.yticks(fontsize=18)
-    plt.show()
+    fname = './true_clustering_dataset'+ str(dataset) + '.png'
+    plt.savefig(fname)
     
     plt.figure(figsize=(8,8))
     max_c = int(np.max(c_hat_autogmm))
@@ -167,7 +170,8 @@ def make_cluster_plots(x,c_true,c_hat_autogmm):
     plt.title('AutoGMM Clustering',fontsize=24,fontweight='bold')
     plt.xticks(fontsize=18)
     plt.yticks(fontsize=18)
-    plt.show()
+    fname = './autogmm_clustering_dataset'+ str(dataset) + '.png'
+    plt.savefig(fname)
 
 
 pyc = AutoGMMCluster(min_components=ks[0],max_components=ks[len(ks)-1],
@@ -190,9 +194,10 @@ print('Best BIC: ' + str(bic))
 print('Best ARI: ' + str(ari))
 
 #%%
+print('Making BIC Plots...')
 make_bic_plots(results,combo[2],k,bic)
 
-
+print('Making Clustering Plots...')
 make_cluster_plots(x,c_true,c_hat_autogmm)
 
 #%%

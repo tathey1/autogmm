@@ -18,7 +18,7 @@ import matplotlib.colors as colors
 dataset = 2 #0-synthetic, 1-BC, 2-drosophila
 #*********************************************************************
 
-
+print('Running graspyclust on dataset #' + str(dataset))
 if dataset==0:
     ks = [i for i in range(1,21)]
     affinities = 'all'
@@ -64,7 +64,8 @@ def make_cluster_plots(x,c_hat_graspy):
     plt.title('GraspyClust Clustering',fontsize=24,fontweight='bold')
     plt.xticks(fontsize=18)
     plt.yticks(fontsize=18)
-    plt.show()
+    fname = './graspyclust_clustering_dataset' + str(dataset) + '.png'
+    plt.savefig(fname)
 
 c_hat_graspy,best_cov_bic, best_k_bic, best_ari_bic,best_bic = brute_graspy_cluster(Ns=[50], x=x,
     covariance_types=['full','tied','diag','spherical'], ks=ks,c_true=c_true)
@@ -74,4 +75,5 @@ print(best_cov_bic)
 print(best_k_bic)
 print(best_bic)
 print(best_ari_bic)
+print('Making Clustering Plots...')
 make_cluster_plots(x,c_hat_graspy)

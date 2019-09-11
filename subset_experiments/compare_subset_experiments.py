@@ -1,7 +1,7 @@
 
 '''
 This script plots the ARI and Runtime values obtained from graspyclust_experiments.py, autogmm_experiments.py, and mclust_experiments.r
-The resulting plots are Figure 1 and Figure 2 of the autogmm paper
+It saves the figures as fig4_abc.png and fig4_def.png
 '''
 #%%
 import numpy as np
@@ -14,7 +14,7 @@ import seaborn as sns
 import warnings
 
 #%%
-
+print('Reading data...')
 #read the data
 mclust_s = pd.read_csv("mclust_synthetic.csv")
 mclust_s = mclust_s.loc[:,['ARI','Time']]
@@ -154,7 +154,8 @@ plt.yticks([0.2*i for i in range(1,6)],fontsize=14)
 plt.subplots_adjust(top=0.85)
 plt.suptitle('Clustering ARIs on Different Datasets',fontweight='bold',fontsize=18)
 
-plt.savefig('./ari.png')
+print('Saving ARI figure')
+plt.savefig('./fig4_abc.png')
 
 #Time plot
 g_time = sns.catplot(x='Algorithm',y='Time',col='Dataset',data=data,kind='swarm',
@@ -291,5 +292,6 @@ plt.suptitle('Clustering Runtimes on Different Datasets',fontweight='bold',fonts
 plt.xticks(fontsize=13)
 plt.yticks(fontsize=13)
 
-plt.savefig('./time.png')
+print('Saving Runtime figure')
+plt.savefig('./fig4_def.png')
 #%%
