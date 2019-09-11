@@ -1,7 +1,26 @@
 # AutoGMM
 This repo reproduces the results in "AutoGMM: Automatic Gaussian Mixture Modeling in Python" (https://arxiv.org/abs/1909.02688)
 
+# Installation
+The algorithm is located in the branch of https://github.com/neurodata/graspy. So, first install graspy through github, then navigate to the autogmm branch usin the following commands:
 
+```
+git clone https://github.com/neurodata/graspy
+cd graspy
+git checkout autogmm
+python3 setup.py install
+```
+
+or
+
+```
+git clone https://github.com/neurodata/graspy
+cd graspy
+git checkout autogmm
+pip install -e .
+```
+
+The algorithm is located in graspy/graspy/cluster/autogmm.py. After autogmm is installed, you can run the scripts below.
 
 # Directories
 ## complete_experiments
