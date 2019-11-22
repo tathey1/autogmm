@@ -24,7 +24,7 @@ random.seed(0)
 
 
 #Change this field for different datasets**************************
-dataset = 0 #0-synthetic, 1-BC, 2-drosophila
+dataset = 2 #0-synthetic, 1-BC, 2-drosophila
 #*********************************************************************
 print('Running AutoGMM on dataset #' + str(dataset))
 
