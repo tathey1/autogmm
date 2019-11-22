@@ -70,27 +70,27 @@ def make_bic_plots(results,best_cov,best_k_bic,best_bic):
     cov_types = ['full','tied','diag','spherical']
     for i,cov_type in enumerate(cov_types):
         bics[i*11+0,:] = -results.loc[(results['covariance_type'] == cov_type) &
-            (results['affinity'] == 'none')]['bic'].values
+            (results['affinity'] == 'none')]['bic/aic'].values
         bics[i*11+1,:] = -results.loc[(results['covariance_type'] == cov_type) &
-            (results['affinity'] == 'euclidean') & (results['linkage'] == 'ward')]['bic'].values
+            (results['affinity'] == 'euclidean') & (results['linkage'] == 'ward')]['bic/aic'].values
         bics[i*11+2,:] = -results.loc[(results['covariance_type'] == cov_type) &
-            (results['affinity'] == 'euclidean') & (results['linkage'] == 'complete')]['bic'].values
+            (results['affinity'] == 'euclidean') & (results['linkage'] == 'complete')]['bic/aic'].values
         bics[i*11+3,:] = -results.loc[(results['covariance_type'] == cov_type) &
-            (results['affinity'] == 'euclidean') & (results['linkage'] == 'average')]['bic'].values
+            (results['affinity'] == 'euclidean') & (results['linkage'] == 'average')]['bic/aic'].values
         bics[i*11+4,:] = -results.loc[(results['covariance_type'] == cov_type) &
-            (results['affinity'] == 'euclidean') & (results['linkage'] == 'single')]['bic'].values
+            (results['affinity'] == 'euclidean') & (results['linkage'] == 'single')]['bic/aic'].values
         bics[i*11+5,:] = -results.loc[(results['covariance_type'] == cov_type) &
-            (results['affinity'] == 'manhattan') & (results['linkage'] == 'complete')]['bic'].values
+            (results['affinity'] == 'manhattan') & (results['linkage'] == 'complete')]['bic/aic'].values
         bics[i*11+6,:] = -results.loc[(results['covariance_type'] == cov_type) &
-            (results['affinity'] == 'manhattan') & (results['linkage'] == 'average')]['bic'].values
+            (results['affinity'] == 'manhattan') & (results['linkage'] == 'average')]['bic/aic'].values
         bics[i*11+7,:] = -results.loc[(results['covariance_type'] == cov_type) &
-            (results['affinity'] == 'manhattan') & (results['linkage'] == 'single')]['bic'].values
+            (results['affinity'] == 'manhattan') & (results['linkage'] == 'single')]['bic/aic'].values
         bics[i*11+8,:] = -results.loc[(results['covariance_type'] == cov_type) &
-            (results['affinity'] == 'cosine') & (results['linkage'] == 'complete')]['bic'].values
+            (results['affinity'] == 'cosine') & (results['linkage'] == 'complete')]['bic/aic'].values
         bics[i*11+9,:] = -results.loc[(results['covariance_type'] == cov_type) &
-            (results['affinity'] == 'cosine') & (results['linkage'] == 'average')]['bic'].values
+            (results['affinity'] == 'cosine') & (results['linkage'] == 'average')]['bic/aic'].values
         bics[i*11+10,:] = -results.loc[(results['covariance_type'] == cov_type) &
-            (results['affinity'] == 'cosine') & (results['linkage'] == 'single')]['bic'].values
+            (results['affinity'] == 'cosine') & (results['linkage'] == 'single')]['bic/aic'].values
 
 
     labels = {0:'none',1:'l2/ward',2:'l2/complete',3:'l2/average',4:'l2/single',
@@ -184,7 +184,7 @@ c_hat_autogmm,ari = pyc.fit_predict(x,c_true)
 combo = [pyc.affinity_,pyc.linkage_,pyc.covariance_type_]
 k = pyc.n_components_
 reg = pyc.reg_covar_
-bic = -pyc.bic_
+bic = -pyc.criter_
 results = pyc.results_
 
 print('Info for table:')
