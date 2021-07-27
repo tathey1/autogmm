@@ -39,7 +39,7 @@ sns.set_context(context)
 
 #%%
 # load data
-path = "../../data"
+path = "../../../data"
 
 # R hemi
 c_true_R = pd.read_csv(path + '/classes_R.csv')
