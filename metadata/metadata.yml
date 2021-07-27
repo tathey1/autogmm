@@ -1,0 +1,21 @@
+metadata_version: 1
+name: 'AutoGMM: Automatic and Hierarchical Gaussian Mixture Modeling in Python'
+description: We present AutoGMM and HGMM that perform automatic and hierarchical Gaussian mixture modeling in Python.
+tags:
+- clustering
+authors:
+- name: Thomas L. Athey
+  affiliations:
+  - name: Johns Hopkins University
+- name: Tingshan Liu
+  affiliations:
+  - name: Johns Hopkins University
+- name: Benjamin D. Pedigo
+  affiliations:
+  - name: Johns Hopkins University
+- name: Joshua T. Vogelstein
+  affiliations:
+  - name: Johns Hopkins University
+corresponding_contributor:
+  name: Joshua T. Vogelstein
+  email: jovo@jhu.edu
