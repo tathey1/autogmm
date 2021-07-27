@@ -9,17 +9,19 @@ It outputs the two subplots of Figure 7 in the paper.
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib import colors
-from graspologic.cluster import AutoGMMCluster
 from joblib import Parallel, delayed
 import pandas as pd
 import seaborn as sns
 from sklearn.metrics import adjusted_rand_score
 from sklearn.cluster import KMeans, AgglomerativeClustering
 from sklearn.mixture import GaussianMixture
+import sys
+sys.path.append("../..")
+from autogmm import AutoGMMCluster
 
 sns.set_context('talk')
 
-#%%
+ #%%
 def AGM(X, y, n_clusters_range, n_init):
     agmm = AutoGMMCluster(
         max_components=n_clusters_range[-1], min_components=n_clusters_range[0], kmeans_n_init=n_init, init_params='kmeans'
