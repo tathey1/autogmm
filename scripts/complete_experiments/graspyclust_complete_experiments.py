@@ -5,7 +5,7 @@ Additionally, it outputs the clustering option that was selected, reproducing in
 
 #%%
 #Synthetic
-from graspy.cluster import GaussianCluster
+from graspologic.cluster import GaussianCluster
 import numpy as np
 import sys
 sys.path.append("..")
@@ -30,9 +30,9 @@ if dataset==0:
     linkages = 'all'
     covariance_types='all'
     
-    x = np.genfromtxt('../data/synthetic.csv', delimiter=',',skip_header=0)
+    x = np.genfromtxt('../../data/synthetic.csv', delimiter=',',skip_header=0)
     x = x[:,np.arange(1,x.shape[1])]
-    c_true = np.genfromtxt('../data/synthetic.csv', delimiter=',', usecols = (0),skip_header=0)
+    c_true = np.genfromtxt('../../data/synthetic.csv', delimiter=',', usecols = (0),skip_header=0)
 elif dataset==1:
     #Wisconsin Diagnostic Data
     ks = [i for i in range(1,21)]
@@ -41,8 +41,8 @@ elif dataset==1:
     covariance_types='all'
     
     #read mean texture, extreme area, and extreme smoothness
-    x = np.genfromtxt('../data/wdbc.data',delimiter=',', usecols = (3,25,26),skip_header=0)
-    with open('../data/wdbc.data') as csvfile:
+    x = np.genfromtxt('../../data/wdbc.data',delimiter=',', usecols = (3,25,26),skip_header=0)
+    with open('../../data/wdbc.data') as csvfile:
         reader = csv.reader(csvfile, delimiter=',')
         c_true = []
         for row in reader:
@@ -54,8 +54,8 @@ elif dataset == 2:
     affinities = 'all'
     linkages = 'all'
     covariance_types='all'
-    x = np.genfromtxt('../data/embedded_right.csv',delimiter=',',skip_header=1)
-    c_true = np.genfromtxt('../data/classes.csv',skip_header=1)
+    x = np.genfromtxt('../../data/embedded_right.csv',delimiter=',',skip_header=1)
+    c_true = np.genfromtxt('../../data/classes.csv',skip_header=1)
 
 
 def make_cluster_plots(x,c_hat_graspy):

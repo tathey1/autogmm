@@ -1,4 +1,4 @@
-from graspy.cluster import GaussianCluster
+from graspologic.cluster import GaussianCluster
 import numpy as np
 import time
 import pandas as pd

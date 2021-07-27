@@ -9,7 +9,7 @@ import time
 from sklearn.datasets import load_iris
 from sklearn import datasets
 import pandas as pd
-from graspy.cluster.autogmm import AutoGMMCluster
+from graspologic.cluster.autogmm import AutoGMMCluster
 
 num_runs = 10
 
@@ -18,9 +18,9 @@ affinities = 'all'
 linkages = 'all'
 covariance_types='all'
 
-x = np.genfromtxt('../data/synthetic.csv', delimiter=',',skip_header=0)
+x = np.genfromtxt('../../data/synthetic.csv', delimiter=',',skip_header=0)
 x = x[:,np.arange(1,x.shape[1])]
-c_true = np.genfromtxt('../data/synthetic.csv', delimiter=',', usecols = (0),skip_header=0)
+c_true = np.genfromtxt('../../data/synthetic.csv', delimiter=',', usecols = (0),skip_header=0)
 idxs_full = pd.read_csv('idxs_synthetic.csv')
 output_file = 'autogmm_synthetic.csv'
 
@@ -55,8 +55,8 @@ linkages = 'all'
 covariance_types='all'
 
 #read mean texture, extreme area, and extreme smoothness
-x = np.genfromtxt('../data/wdbc.data',delimiter=',', usecols = (3,25,26),skip_header=0)
-with open('../data/wdbc.data') as csvfile:
+x = np.genfromtxt('../../data/wdbc.data',delimiter=',', usecols = (3,25,26),skip_header=0)
+with open('../../data/wdbc.data') as csvfile:
     reader = csv.reader(csvfile, delimiter=',')
     c_true = []
     for row in reader:
@@ -96,8 +96,8 @@ affinities = 'all'
 linkages = 'all'
 covariance_types='all'
 
-x = np.genfromtxt('../data/embedded_right.csv',delimiter=',',skip_header=1)
-c_true = np.genfromtxt('../data/classes.csv',skip_header=1)
+x = np.genfromtxt('../../data/embedded_right.csv',delimiter=',',skip_header=1)
+c_true = np.genfromtxt('../../data/classes.csv',skip_header=1)
 idxs_full = pd.read_csv('idxs_drosophila.csv')
 output_file = 'autogmm_drosophila.csv'
 

@@ -2,7 +2,7 @@ import numpy as np
 import time
 import matplotlib.pyplot as plt
 import pandas as pd
-from graspy.cluster.autogmm import AutoGMMCluster
+from graspologic.cluster.autogmm import AutoGMMCluster
 
 affinities = ['none','manhattan','euclidean','cosine']
 linkages = ['ward','complete','average','single']
