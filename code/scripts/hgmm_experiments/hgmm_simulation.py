@@ -7,7 +7,6 @@ It outputs the 4 subplots of Figure 8 in the paper.
 import numpy as np
 import pandas as pd
 import seaborn as sns
-# import matplotlib as mpl
 import matplotlib.pyplot as plt
 from joblib import Parallel, delayed
 
@@ -21,7 +20,7 @@ def calculate_means(loc_scale, center, length, level):
         length = length * loc_scale
         for i in range(len(means)):
             means[i] = [means[i]-length, means[i]+length]
-            means = list(np.array(means).ravel())
+            means = list(np.array(means, dtype=object).ravel())
     return means
 
 def GM_data(cov_scale, n_sample, loc_scale=0.3):
@@ -88,7 +87,7 @@ ax.legend(legend.legendHandles, (1,2,3,4,5,6,7,8), title='label', bbox_to_anchor
 plt.setp(ax.get_legend().get_texts(), fontsize='22') # for legend text
 plt.setp(ax.get_legend().get_title(), fontsize='22') # for legend title
 plt.tight_layout()
-plt.savefig('data_hist.png', transparancy=False, facecolor='white', bbox_inches = "tight", dpi=300)
+plt.savefig('/results/data_hist.png', bbox_inches = "tight", dpi=300)
 
 #%%
 def heatmap_label(pred_sorted, title, figname):
@@ -124,7 +123,7 @@ def heatmap_label(pred_sorted, title, figname):
 
     fig.text(-0.01, 0.5, "Depth", fontsize=22, rotation=90, va="center", ha="center")
     plt.tight_layout()
-    # plt.savefig(figname, bbox_inches='tight')
+    plt.savefig(figname, bbox_inches = "tight", dpi=300)
 
 def relabel(pred):
     # reorder the labels so that the clusters in each array
@@ -149,7 +148,7 @@ rc = DivisiveCluster(max_level=6, max_components=2)
 x, y = GM_data(0.5, 100)
 x = x.reshape((-1, 1))
 pred_scale5 = rc.fit_predict(x, fcluster=True)
-heatmap_label(relabel(pred_scale5), "b) Clustering Assignments", "sample_dendrogram")
+heatmap_label(relabel(pred_scale5), "b) Clustering Assignments", "/results/sample_dendrogram.png")
 
 #%%
 def dim1_3lvl_2GM(cov_scale, n_sample, loc_scale=0.3):
@@ -260,4 +259,4 @@ ax.set_ylim(ymax=ymax)
 plt.plot([8.5, 8.5],[ymin, ymax], linewidth=4, color='r', linestyle = '--')
 
 plt.tight_layout()
-plt.savefig("clustering_performance.png", transparancy=False, facecolor='white', bbox_inches = "tight", dpi=300)
+plt.savefig("/results/clustering_performance.png", bbox_inches = "tight", dpi=300)

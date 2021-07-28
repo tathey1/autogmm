@@ -2,4 +2,51 @@
 set -ex
 
 # This is the master script for the capsule. When you click "Reproducible Run", the code in this file will execute.
-python -u scripts/compare_clusterings/compare_clusterings.py "$@"
+# python -u scripts/compare_clusterings/compare_clusterings.py "$@"
+
+
+printf 'running complete experiments for the synthetic dataset'
+dataset=0
+Rscript 'scripts/complete_experiments/mclust_complete_experiments.R' ${dataset}
+python scripts/complete_experiments/graspyclust_complete_experiments.py -o /results/ $dataset
+python scripts/complete_experiments/autogmm_complete_experiments.py -o /results/ $dataset
+
+printf 'running complete experiments for the breast cancer dataset'
+dataset=1
+Rscript 'scripts/complete_experiments/mclust_complete_experiments.R' ${dataset}
+python scripts/complete_experiments/graspyclust_complete_experiments.py -o /results/ $dataset
+python scripts/complete_experiments/autogmm_complete_experiments.py -o /results/ $dataset
+
+printf 'running complete experiments for the Drosophila dataset'
+dataset=2
+Rscript 'scripts/complete_experiments/mclust_complete_experiments.R' ${dataset}
+python scripts/complete_experiments/graspyclust_complete_experiments.py -o /results/ $dataset
+python scripts/complete_experiments/autogmm_complete_experiments.py -o /results/ $dataset
+
+
+printf 'running the subset experiments'
+# these lines may take very long to run -- using the outputs in t/code/scripts/subset_experiments/paper_results
+# python scripts/subset_experiments/autogmm_subset_experiments.py -o /results/
+# python scripts/subset_experiments/graspyclust_subset_experiments.py -o /results/
+# Rscript scripts/subset_experiments/mclust_subset_experiments.r -o /results/
+python scripts/subset_experiments/compare_subset_experiments.py -o /results/
+
+
+printf 'computing the runtimes with varying sample sizes'
+# these lines may take very long to run -- using the outputs in /code/scripts/option_runtimes/paper
+# python scripts/option_runtimes/autogmm_option_runtimes.py -o /results/
+# python scripts/option_runtimes/graspyclust_option_runtimes.py -o /results/
+# Rscript scripts/option_runtimes/mclust_option_runtimes.R -o /results/
+python scripts/option_runtimes/show_runtimes.py -o /results/
+
+
+printf 'running the experiments to compare multiple clusterings algorithms'
+python scripts/compare_clusterings/compare_clusterings.py -o /results/
+
+
+printf 'running the HGMM experiments'
+python scripts/hgmm_experiments/hgmm_simulation.py -o /results/
+python scripts/hgmm_experiments/hgmm_drosophila.py -o /results/
+
+
+

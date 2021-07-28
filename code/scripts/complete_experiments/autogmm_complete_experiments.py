@@ -24,8 +24,9 @@ random.seed(0)
 #%%
 
 #Change this field for different datasets**************************
-dataset = 0 #0-synthetic, 1-BC, 2-drosophila
+# dataset = 0 #0-synthetic, 1-BC, 2-drosophila
 #*********************************************************************
+dataset = int(sys.argv[-1])
 print('Running AutoGMM on dataset #' + str(dataset))
 
 if dataset==0:
@@ -146,7 +147,7 @@ def make_bic_plots(results,best_cov,best_k_bic,best_bic):
     ax3.set_title(titles[3],fontsize=22,fontweight='bold')
     ax3.set_xticks(range(0,21,4))
     ax3.set_xticklabels(ax3.get_xticks(),fontsize=18)
-    fname = './autogmm_bicplot_dataset'+ str(dataset) + '.png'
+    fname = '/results/autogmm_bicplot_dataset'+ str(dataset) + '.png'
     plt.savefig(fname)
 
 def make_cluster_plots(x,c_true,c_hat_autogmm):
@@ -160,7 +161,7 @@ def make_cluster_plots(x,c_true,c_hat_autogmm):
     plt.title('True Clustering',fontsize=24,fontweight='bold')
     plt.xticks(fontsize=18)
     plt.yticks(fontsize=18)
-    fname = './true_clustering_dataset'+ str(dataset) + '.png'
+    fname = '/results/true_clustering_dataset'+ str(dataset) + '.png'
     plt.savefig(fname)
     
     plt.figure(figsize=(8,8))
@@ -171,14 +172,14 @@ def make_cluster_plots(x,c_true,c_hat_autogmm):
     plt.title('AutoGMM Clustering',fontsize=24,fontweight='bold')
     plt.xticks(fontsize=18)
     plt.yticks(fontsize=18)
-    fname = './autogmm_clustering_dataset'+ str(dataset) + '.png'
+    fname = '/results/autogmm_clustering_dataset'+ str(dataset) + '.png'
     plt.savefig(fname)
 
 
 pyc = AutoGMMCluster(min_components=ks[0],max_components=ks[len(ks)-1],
     affinity=affinities,linkage=linkages,covariance_type=covariance_types,
     random_state=0)
-c_hat_autogmm,ari = pyc.fit_predict(x,c_true)
+c_hat_autogmm = pyc.fit_predict(x,c_true)
 #np.savetxt('autogmm.csv',labels, delimiter=',')
 
 combo = [pyc.affinity_,pyc.linkage_,pyc.covariance_type_]
@@ -192,7 +193,7 @@ print('Best model: ' + str(combo))
 print('Best reg: ' + str(reg))
 print('Best k: ' + str(k))
 print('Best BIC: ' + str(bic))
-print('Best ARI: ' + str(ari))
+# print('Best ARI: ' + str(ari))
 
 #%%
 print('Making BIC Plots...')

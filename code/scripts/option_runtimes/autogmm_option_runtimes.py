@@ -4,6 +4,8 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from graspologic.cluster.autogmm import AutoGMMCluster
 
+path = '/code/scripts/option_runtimes/data/'
+
 affinities = ['none','manhattan','euclidean','cosine']
 linkages = ['ward','complete','average','single']
 covariance_types = ['full','tied','diag','spherical']
@@ -12,7 +14,7 @@ ks = [i for i in range(2,6)]
 base = 40
 factor = 2
 num_sets = 14 #indicates the maximally sized dataset (16 in the paper)
-output_file = 'autogmm_option_times.csv'
+output_file = '/results/autogmm_option_times.csv'
 
 ns = base*np.power(factor,np.arange(num_sets))
 ts = np.zeros(ns.shape)
@@ -27,7 +29,7 @@ for affinity in affinities:
             continue
         for covariance_type in covariance_types:
             for i,n in enumerate(ns):
-                file = ".\data\\" + str(n) + ".csv"
+                file = path + str(n) + ".csv"
                 x = np.genfromtxt(file, delimiter=',',skip_header=0)
                 x = x[:,np.arange(1,x.shape[1])]
                 c_true = np.genfromtxt(file, delimiter=',', usecols = (0),skip_header=0)
@@ -39,5 +41,5 @@ for affinity in affinities:
                 entry = {'N':n,'Affinity':affinity,'Linkage':linkage,'Covariance_Type':covariance_type, 'Time':time.time() - start_time};
                 results = results.append(entry, ignore_index=True)
                 
-                print(entry)
+                # print(entry)
 results.to_csv(path_or_buf =output_file)

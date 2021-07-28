@@ -1,8 +1,10 @@
 library("mclust")
 
+# path = '/code/scripts/subset_experiments/'
+
 #Synthetic
 X <- read.csv(file='../../../data/synthetic.csv',header=FALSE,sep = ',')[,-1]
-idx_mat <- read.csv(file='idxs_synthetic.csv',header=TRUE, sep=',')
+idx_mat <- read.csv(file='/code/scripts/subset_experiments/idxs_synthetic.csv',header=TRUE, sep=',')
 idx_mat <- idx_mat[,2:ncol(idx_mat)]
 c <- read.csv(file='../../../data/synthetic.csv',header=FALSE, sep = ',')[,1]+1
 modelNames=mclust.options("emModelNames")
@@ -43,12 +45,12 @@ for(r in 1:run_nums) {
   results$Time[r] = end_time-start_time
   
 }
-write.csv(results, "mclust_synthetic.csv")
+write.csv(results, "/results/mclust_synthetic.csv")
 
 #Breast Cancer
 #read mean texture, extreme area, and extreme smoothness
 X <- read.csv(file='../../../data/wdbc.data',header=FALSE,sep=',')[,c(4,26,27)]
-idx_mat <- read.csv(file='idxs_bc.csv',header=TRUE, sep=',')
+idx_mat <- read.csv(file='/code/scripts/subset_experiments/idxs_bc.csv', header=TRUE, sep=',')
 idx_mat <- idx_mat[,2:ncol(idx_mat)]
 c <- read.csv(file='../../../data/wdbc.data',header=FALSE,sep=',')[,2]
 modelNames=mclust.options("emModelNames")
@@ -89,13 +91,13 @@ for(r in 1:run_nums) {
   results$Time[r] = end_time-start_time
   
 }
-write.csv(results, "mclust_bc.csv")
+write.csv(results, "/results/mclust_bc.csv")
 
 
 #Drosophila
 X <- read.csv(file='../../../data/embedded_right.csv',header=TRUE,sep=',')
 c_file <- read.csv(file='../../../data/classes.csv',header=TRUE,sep=',')
-idx_mat <- read.csv(file='idxs_drosophila.csv',header=TRUE, sep=',')
+idx_mat <- read.csv(file='/code/scripts/subset_experiments/idxs_drosophila.csv', header=TRUE, sep=',')
 idx_mat <- idx_mat[,2:ncol(idx_mat)]
 c <- factor(c_file$x)
 modelNames=mclust.options("emModelNames")
@@ -136,4 +138,4 @@ for(r in 1:run_nums) {
   results$Time[r] = end_time-start_time
   
 }
-write.csv(results, "mclust_drosophila.csv")
+write.csv(results, "/results/mclust_drosophila.csv")

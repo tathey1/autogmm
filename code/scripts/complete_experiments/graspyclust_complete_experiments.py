@@ -8,7 +8,7 @@ Additionally, it outputs the clustering option that was selected, reproducing in
 from graspologic.cluster import GaussianCluster
 import numpy as np
 import sys
-sys.path.append("..")
+sys.path.append("/code/scripts")
 from brute_cluster_graspyclust import brute_graspy_cluster
 import time
 import pandas as pd
@@ -20,8 +20,9 @@ import matplotlib.colors as colors
 
 #%%
 #Change this field for different datasets**************************
-dataset = 2 #0-synthetic, 1-BC, 2-drosophila
+# dataset = 0 #0-synthetic, 1-BC, 2-drosophila
 #*********************************************************************
+dataset = int(sys.argv[-1])
 
 print('Running graspyclust on dataset #' + str(dataset))
 if dataset==0:
@@ -69,7 +70,7 @@ def make_cluster_plots(x,c_hat_graspy):
     plt.title('GraspyClust Clustering',fontsize=24,fontweight='bold')
     plt.xticks(fontsize=18)
     plt.yticks(fontsize=18)
-    fname = './graspyclust_clustering_dataset' + str(dataset) + '.png'
+    fname = '/results/graspyclust_clustering_dataset' + str(dataset) + '.png'
     plt.savefig(fname)
 
 c_hat_graspy,best_cov_bic, best_k_bic, best_ari_bic,best_bic = brute_graspy_cluster(Ns=[50], x=x,
@@ -79,6 +80,6 @@ print('Info for Table:')
 print('Best model: ' + best_cov_bic)
 print('Best k: ' + str(best_k_bic))
 print('Best BIC: ' + str(best_bic))
-print('Best ARI: ' + str(best_ari_bic))
+# print('Best ARI: ' + str(best_ari_bic))
 print('Making Clustering Plots...')
 make_cluster_plots(x,c_hat_graspy)

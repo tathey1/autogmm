@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -e
+
+pip install --upgrade --pre --extra-index https://pypi.anaconda.org/scipy-wheels-nightly/simple scikit-learn

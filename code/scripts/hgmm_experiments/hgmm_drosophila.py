@@ -220,7 +220,6 @@ pal = pal[1:]
 class_label = 'type'
 sizes = meta_R.groupby([class_label], sort=False).size()
 uni_class = sizes.index.unique()
-print(uni_class)
 
 # reorder pal to match the ordering of classes in uni_class
 pal_new_R = np.zeros((pal.shape[0], pal.shape[1]))
@@ -235,7 +234,6 @@ count_map_R = dict(zip(uni_class, counts))
 class_label = 'type'
 sizes = meta_L.groupby([class_label], sort=False).size()
 uni_class = sizes.index.unique()
-print(uni_class)
 
 # reorder pal to match the ordering of classes in uni_class
 pal_new_L = np.zeros((pal.shape[0], pal.shape[1]))
@@ -432,7 +430,7 @@ ax.set_xlabel("Depth")
 ax.set_xticklabels(np.arange(lowest_level + 1),rotation=90)
 ax.bar(x=0, height=10, bottom=0, width=width, color="k")  # add a scale bar in the bottom left
 ax.text(x=0.35, y=5, s="10 neurons", rotation=90, va='center', fontsize=40)
-ax.text(x=0, y=455, s="Left", rotation=90, fontsize=60, fontweight="bold", ha='center', va='top')
+ax.text(x=0, y=440, s="Left", rotation=90, fontsize=60, fontweight="bold", ha='center', va='top')
 
 # R hemi
 sizes = meta_R.groupby(['type'], sort=False).size()
@@ -463,4 +461,4 @@ ax.text(x=0, y=440, s="Right", rotation=90, fontsize=60, fontweight="bold", ha='
 
 plt.subplots_adjust(hspace=0)
 plt.tight_layout()
-plt.savefig('maggot_dendrograms_new', bbox_inches='tight', transparancy=False, facecolor='white', dpi=300)
+plt.savefig('/results/maggot_dendrograms', bbox_inches='tight', dpi=300)

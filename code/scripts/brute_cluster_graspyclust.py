@@ -16,7 +16,8 @@ def brute_graspy_cluster(Ns, x, covariance_types,ks, c_true, savefigs=None,graph
         aris = np.zeros([len(ks),len(covariance_types),N])
         for i in np.arange(N):
             graspy_gmm = GaussianCluster(min_components=ks[0],max_components=ks[len(ks)-1],covariance_type=covariance_types,random_state=i)
-            c_hat,ari = graspy_gmm.fit_predict(x,y=c_true)
+            c_hat = graspy_gmm.fit_predict(x,y=c_true)
+            ari = graspy_gmm.ari_.max().max()
             bic_values = -graspy_gmm.bic_.values
             ari_values = graspy_gmm.ari_.values
             bics[:,:,i] = bic_values

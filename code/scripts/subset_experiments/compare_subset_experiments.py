@@ -1,7 +1,7 @@
 
 '''
 This script plots the ARI and Runtime values obtained from graspyclust_experiments.py, autogmm_experiments.py, and mclust_experiments.r
-It saves the figures as fig4_abc.png and fig4_def.png
+It saves the figures as subset_abc.png and subset_def.png
 '''
 #%%
 import numpy as np
@@ -15,48 +15,49 @@ import warnings
 
 #%%
 print('Reading data...')
+path = '/code/scripts/subset_experiments/paper_results/'
 #read the data
-mclust_s = pd.read_csv("mclust_synthetic.csv")
+mclust_s = pd.read_csv(path + "mclust_synthetic.csv")
 mclust_s = mclust_s.loc[:,['ARI','Time']]
 mclust_s['Dataset'] = mclust_s.shape[0]*['Synthetic']
 mclust_s['Algorithm'] = mclust_s.shape[0]*['mclust']
 
-mclust_bc = pd.read_csv("mclust_bc.csv")
+mclust_bc = pd.read_csv(path + "mclust_bc.csv")
 mclust_bc = mclust_bc.loc[:,['ARI','Time']]
 mclust_bc['Dataset'] = mclust_bc.shape[0]*['Breast Cancer']
 mclust_bc['Algorithm'] = mclust_bc.shape[0]*['mclust']
 
-mclust_dro = pd.read_csv("mclust_drosophila.csv")
+mclust_dro = pd.read_csv(path + "mclust_drosophila.csv")
 mclust_dro = mclust_dro.loc[:,['ARI','Time']]
 mclust_dro['Dataset'] = mclust_dro.shape[0]*['Drosophila']
 mclust_dro['Algorithm'] = mclust_dro.shape[0]*['mclust']
 
-autogmm_s = pd.read_csv("autogmm_synthetic.csv")
+autogmm_s = pd.read_csv(path + "autogmm_synthetic.csv")
 autogmm_s = autogmm_s.loc[:,['ARI','Time']]
 autogmm_s['Dataset'] = autogmm_s.shape[0]*['Synthetic']
 autogmm_s['Algorithm'] = autogmm_s.shape[0]*['AutoGMM']
 
-autogmm_bc = pd.read_csv("autogmm_bc.csv")
+autogmm_bc = pd.read_csv(path + "autogmm_bc.csv")
 autogmm_bc = autogmm_bc.loc[:,['ARI','Time']]
 autogmm_bc['Dataset'] = autogmm_bc.shape[0]*['Breast Cancer']
 autogmm_bc['Algorithm'] = autogmm_bc.shape[0]*['AutoGMM']
 
-autogmm_dro = pd.read_csv("autogmm_drosophila.csv")
+autogmm_dro = pd.read_csv(path + "autogmm_drosophila.csv")
 autogmm_dro = autogmm_dro.loc[:,['ARI','Time']]
 autogmm_dro['Dataset'] = autogmm_dro.shape[0]*['Drosophila']
 autogmm_dro['Algorithm'] = autogmm_dro.shape[0]*['AutoGMM']
 
-graspyclust_s = pd.read_csv("graspyclust_synthetic.csv")
+graspyclust_s = pd.read_csv(path + "graspyclust_synthetic.csv")
 graspyclust_s = graspyclust_s.loc[:,['ARI','Time']]
 graspyclust_s['Dataset'] = graspyclust_s.shape[0]*['Synthetic']
 graspyclust_s['Algorithm'] = graspyclust_s.shape[0]*['graspyclust']
 
-graspyclust_bc = pd.read_csv("graspyclust_bc.csv")
+graspyclust_bc = pd.read_csv(path + "graspyclust_bc.csv")
 graspyclust_bc = graspyclust_bc.loc[:,['ARI','Time']]
 graspyclust_bc['Dataset'] = graspyclust_bc.shape[0]*['Breast Cancer']
 graspyclust_bc['Algorithm'] = graspyclust_bc.shape[0]*['graspyclust']
 
-graspyclust_dro = pd.read_csv("graspyclust_drosophila.csv")
+graspyclust_dro = pd.read_csv(path + "graspyclust_drosophila.csv")
 graspyclust_dro = graspyclust_dro.loc[:,['ARI','Time']]
 graspyclust_dro['Dataset'] = graspyclust_dro.shape[0]*['Drosophila']
 graspyclust_dro['Algorithm'] = graspyclust_dro.shape[0]*['graspyclust']
@@ -155,7 +156,7 @@ plt.subplots_adjust(top=0.85)
 plt.suptitle('Clustering ARIs on Different Datasets',fontweight='bold',fontsize=18)
 
 print('Saving ARI figure')
-plt.savefig('./fig4_abc.png')
+plt.savefig('/results/subset_abc.png')
 
 #Time plot
 g_time = sns.catplot(x='Algorithm',y='Time',col='Dataset',data=data,kind='swarm',
@@ -293,5 +294,5 @@ plt.xticks(fontsize=13)
 plt.yticks(fontsize=13)
 
 print('Saving Runtime figure')
-plt.savefig('./fig4_def.png')
+plt.savefig('/results/subset_def.png')
 #%%

@@ -4,13 +4,15 @@
 #Lastly, it constructs the bicplot. The bicplot for the drosophila data is found in figure 3
 #Rather than saving the figures, it outputs them on the screen
 
+# install.packages('mclust')
 library("mclust")
-setwd(dirname(sys.frame(1)$ofile))
+# setwd(dirname(sys.frame(1)$ofile))
 
 #****************************Change this to view different datasets
-dataset = 2 #0-synthetic, 1-BC, 2-drosophila
+# dataset = 0 #0-synthetic, 1-BC, 2-drosophila
 #*********************************************************************
 
+dataset <- commandArgs(trailingOnly = TRUE)
 
 if (dataset==0) {
   X <- read.csv(file='../../../data/synthetic.csv',header=FALSE,sep = ',')[,-1]
@@ -45,7 +47,7 @@ k <- model$G
 bic <- max(model$BIC,na.rm=T)
 ari <- adjustedRandIndex(c,model$classification)
 
-
+png(paste('/results/mclust_clustering_dataset', dataset, '.png'))
 plot(first_dim,second_dim,col=colors[model$classification],pch=19,xlab='feature 1',ylab='feature 2',main='mclust clustering') 
 print(paste('Best model: ',combo))
 print(paste('Best k: ',k))
@@ -54,6 +56,7 @@ print(paste('Best ARI: ',ari))
 
 BIC <- mclustBIC(X,ks,verbose=FALSE, modelNames=modelNames)
 
+png(paste('/results/mclust_bicplot_dataset', dataset, '.png'))
 par(cex.axis=1.2,cex.lab=1.5,pty='s')
 plot(BIC)
 title(main='b) mclust')

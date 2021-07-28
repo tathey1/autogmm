@@ -11,6 +11,7 @@ from sklearn import datasets
 import pandas as pd
 from graspologic.cluster.autogmm import AutoGMMCluster
 
+path = '/code/scripts/subset_experiments/'
 num_runs = 10
 
 ks = [i for i in range(1,21)]
@@ -21,8 +22,8 @@ covariance_types='all'
 x = np.genfromtxt('../../../data/synthetic.csv', delimiter=',',skip_header=0)
 x = x[:,np.arange(1,x.shape[1])]
 c_true = np.genfromtxt('../../../data/synthetic.csv', delimiter=',', usecols = (0),skip_header=0)
-idxs_full = pd.read_csv('idxs_synthetic.csv')
-output_file = 'autogmm_synthetic.csv'
+idxs_full = pd.read_csv(path + 'idxs_synthetic.csv')
+output_file = '/results/autogmm_synthetic.csv'
 
 results = pd.DataFrame(columns=['ARI','Time'])
 x_full = x
@@ -63,8 +64,8 @@ with open('../../../data/wdbc.data') as csvfile:
         c_true.append(row[1])
         
 c_true = np.asarray([int(c == 'M') for c in c_true])
-idxs_full = pd.read_csv('idxs_bc.csv')
-output_file = 'autogmm_bc.csv'
+idxs_full = pd.read_csv(path + 'idxs_bc.csv')
+output_file = '/results/autogmm_bc.csv'
 
 results = pd.DataFrame(columns=['ARI','Time'])
 x_full = x
@@ -98,8 +99,8 @@ covariance_types='all'
 
 x = np.genfromtxt('../../../data/embedded_right.csv',delimiter=',',skip_header=1)
 c_true = np.genfromtxt('../../../data/classes.csv',skip_header=1)
-idxs_full = pd.read_csv('idxs_drosophila.csv')
-output_file = 'autogmm_drosophila.csv'
+idxs_full = pd.read_csv(path + 'idxs_drosophila.csv')
+output_file = '/results/autogmm_drosophila.csv'
 
 results = pd.DataFrame(columns=['ARI','Time'])
 x_full = x

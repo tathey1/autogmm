@@ -16,12 +16,12 @@ from sklearn.metrics import adjusted_rand_score
 from sklearn.cluster import KMeans, AgglomerativeClustering
 from sklearn.mixture import GaussianMixture
 import sys
-sys.path.append("../..")
+sys.path.append("/code")
 from autogmm import AutoGMMCluster
 
 sns.set_context('talk')
 
- #%%
+#%%
 def AGM(X, y, n_clusters_range, n_init):
     agmm = AutoGMMCluster(
         max_components=n_clusters_range[-1], min_components=n_clusters_range[0], kmeans_n_init=n_init, init_params='kmeans'
@@ -130,7 +130,7 @@ for i in range(len(algs)):
                  transform=plt.gca().transAxes, size=15,
                  horizontalalignment='right')
 fig.suptitle('Synthetic Double-Cigar Dataset', y=0.93, fontsize=22, fontweight='bold')
-plt.savefig('cigar_pred.png', transparancy=False, facecolor='white', bbox_inches = "tight", dpi=300)
+plt.savefig('/results/cigar_pred.png', facecolor='white', bbox_inches = "tight", dpi=300)
 
 #%%
 # make boxplot of ARIs for cigar datasets
@@ -168,5 +168,5 @@ ax.set_title('ARIs for Different Clustering Algorithms', fontsize=20, fontweight
 ax.set_xlabel('')
 ax.set_ylabel('ARI', fontsize=20)
 ax.set_xticklabels(ax.get_xticklabels(), fontsize=20)
-plt.savefig('cigar_aris_boxplot.png', transparancy=False, facecolor='white', bbox_inches = "tight", dpi=300)
+plt.savefig('/results/cigar_aris_boxplot.png', facecolor='white', bbox_inches = "tight", dpi=300)
 plt.show()

@@ -9,7 +9,7 @@ factor <- 2
 num_sets <- 13 #indicates the maximally sized dataset (15 in the paper)
 exps <- 0:num_sets #************************8
 ns <- base * factor ^ exps
-output_file <- 'mclust_option_times.csv' #******************************8
+output_file <- '/results/mclust_option_times.csv' #******************************8
 results <- data.frame(matrix(ncol = 3, nrow = 0))
 cols <- c('N','Model','Time')
 colnames(results) <- cols
@@ -26,10 +26,11 @@ cols <- c('N','Model','Time')
 colnames(results) <- cols
 idx=1
 
+path = '/code/scripts/option_runtimes/data/'
 
 for(modelName in modelNames) {
   for(n in ns) {
-    file = paste('data/', toString(n), '.csv', sep='')
+    file = paste(path, toString(n), '.csv', sep='')
     X <- read.csv(file=file,header=FALSE,sep = ',')[,-1]
     c <- read.csv(file=file,header=FALSE, sep = ',')[,1]+1
     
@@ -37,7 +38,7 @@ for(modelName in modelNames) {
     model <- Mclust(X,ks,verbose=FALSE,modelNames=modelName)
     end_time <- Sys.time()
     entry = c(n,modelName,as.numeric(difftime(end_time,start_time,units='secs')))
-    print(entry)
+    # print(entry)
     results[idx,] = entry
     idx <- idx+1
   }
