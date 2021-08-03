@@ -5,6 +5,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import csv
 import random
+from sklearn.metrics import adjusted_rand_score
 
 def brute_graspy_cluster(Ns, x, covariance_types,ks, c_true, savefigs=None,graphList=None):
     if graphList != None and 'all_bics' in graphList:
@@ -17,7 +18,7 @@ def brute_graspy_cluster(Ns, x, covariance_types,ks, c_true, savefigs=None,graph
         for i in np.arange(N):
             graspy_gmm = GaussianCluster(min_components=ks[0],max_components=ks[len(ks)-1],covariance_type=covariance_types,random_state=i)
             c_hat = graspy_gmm.fit_predict(x,y=c_true)
-            ari = graspy_gmm.ari_.max().max()
+            ari = adjusted_rand_score(c_hat, c_true)
             bic_values = -graspy_gmm.bic_.values
             ari_values = graspy_gmm.ari_.values
             bics[:,:,i] = bic_values

@@ -197,7 +197,8 @@ print('Best BIC: ' + str(bic))
 
 #%%
 print('Making BIC Plots...')
-make_bic_plots(results,combo[2],k,bic)
+if dataset == 2:
+    make_bic_plots(results,combo[2],k,bic)
 
 print('Making Clustering Plots...')
 make_cluster_plots(x,c_true,c_hat_autogmm)

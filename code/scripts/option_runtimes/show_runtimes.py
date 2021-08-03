@@ -1,5 +1,5 @@
 '''
-This script reproduces figure 6 in the paper (fig6.png)
+This script reproduces figure 6 in the paper (option_runtimes.png)
 '''
 
 #%%
@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
 import numpy as np
 
-path = '/code/scripts/option_runtimes/paper/'
+path = '/results/'
 
 print('Reading AutoGMM results...')
 #Now plot the different autogmm options
@@ -118,6 +118,6 @@ plt.xticks([1e2, 1e4, 1e6],fontsize=20)
 plt.yticks([1e-3, 1, 1e3],fontsize=20)
 plt.legend(prop={'size': 20})
 fname = '/results/option_runtimes.png'
-plt.savefig(fname)
+plt.savefig(fname, bbox_inches = "tight", dpi=300)
 #%%
 

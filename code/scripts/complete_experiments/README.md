@@ -5,6 +5,4 @@ Each file displays information about the chosen model (Table 2), and the final c
 
 The autogmm and mclust scripts additionally display the BIC curves for their different clustering options (Figure 5).
 
-At the top of each script is a line that defines a variable called "dataset." This variable indicates the dataset on which the algorithm will run.
-
 Note: For the R script, users may need to "Set Working Directory" to "Source File Location," for the scripts to find find relative paths correctly.

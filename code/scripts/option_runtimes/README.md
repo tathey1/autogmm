@@ -5,8 +5,5 @@ To recreate Figure 6:
 
 **make_data.py** - file used to make synthetic mixture data in the **./data** directory. \
 **./data/** - synthetic mixture data used in the paper.
-Note that due to Github filesize constraints, we did not upload the n=655360 dataset or the n=1310720 dataset.
-Thus, if you want to make a figure that more closely represents that in the paper, then you should used make_data.py to make datasets of those sizes, then adjust the "num_sets" variable in each script if necessary. \
-**./paper/** - clustering results published in the paper.
 
 Note: For the R script, users may need to "Set Working Directory" to "Source File Location," for the scripts to find find relative paths correctly.

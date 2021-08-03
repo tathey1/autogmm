@@ -429,8 +429,9 @@ ax.spines["bottom"].set_visible(False)
 ax.set_xlabel("Depth")
 ax.set_xticklabels(np.arange(lowest_level + 1),rotation=90)
 ax.bar(x=0, height=10, bottom=0, width=width, color="k")  # add a scale bar in the bottom left
-ax.text(x=0.35, y=5, s="10 neurons", rotation=90, va='center', fontsize=40)
-ax.text(x=0, y=440, s="Left", rotation=90, fontsize=60, fontweight="bold", ha='center', va='top')
+ax.text(x=0.35, y=5, s="10 neurons", rotation=90, va='center', fontsize=35)
+_, ymax = ax.get_ylim()
+ax.text(x=0, y=ymax, s="Left", rotation=90, fontsize=60, fontweight="bold", ha='center', va='top')
 
 # R hemi
 sizes = meta_R.groupby(['type'], sort=False).size()
@@ -457,7 +458,8 @@ ax.spines["left"].set_visible(False)
 ax.spines["bottom"].set_visible(False)
 ax.set_xlabel("Depth")
 ax.set_xticklabels(np.arange(lowest_level + 1),rotation=90)
-ax.text(x=0, y=440, s="Right", rotation=90, fontsize=60, fontweight="bold", ha='center', va='top')
+_, ymax = ax.get_ylim()
+ax.text(x=0, y=ymax, s="Right", rotation=90, fontsize=60, fontweight="bold", ha='center', va='top')
 
 plt.subplots_adjust(hspace=0)
 plt.tight_layout()

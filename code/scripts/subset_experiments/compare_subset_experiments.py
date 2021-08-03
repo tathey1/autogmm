@@ -15,7 +15,8 @@ import warnings
 
 #%%
 print('Reading data...')
-path = '/code/scripts/subset_experiments/paper_results/'
+path = '/results/'
+
 #read the data
 mclust_s = pd.read_csv(path + "mclust_synthetic.csv")
 mclust_s = mclust_s.loc[:,['ARI','Time']]
@@ -294,5 +295,5 @@ plt.xticks(fontsize=13)
 plt.yticks(fontsize=13)
 
 print('Saving Runtime figure')
-plt.savefig('/results/subset_def.png')
+plt.savefig('/results/subset_def.png', bbox_inches = "tight", dpi=300)
 #%%

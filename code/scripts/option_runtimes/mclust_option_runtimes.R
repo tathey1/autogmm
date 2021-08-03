@@ -6,8 +6,8 @@ library("mclust")
 
 base <- 40
 factor <- 2
-num_sets <- 13 #indicates the maximally sized dataset (15 in the paper)
-exps <- 0:num_sets #************************8
+num_sets <- 13 #indicates the maximally sized dataset
+exps <- 0:num_sets #*************************
 ns <- base * factor ^ exps
 output_file <- '/results/mclust_option_times.csv' #******************************8
 results <- data.frame(matrix(ncol = 3, nrow = 0))

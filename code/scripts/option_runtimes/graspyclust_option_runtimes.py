@@ -16,7 +16,7 @@ ks = [i for i in range(2,6)]
 
 base = 40
 factor = 2
-num_sets = 14 #indicates the maximally sized dataset (14 in the paper)
+num_sets = 14 #indicates the maximally sized dataset
 output_file = '/results/graspyclust_option_times.csv'
 
 ns = base*np.power(factor,np.arange(num_sets))

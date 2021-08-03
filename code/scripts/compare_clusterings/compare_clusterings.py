@@ -130,7 +130,7 @@ for i in range(len(algs)):
                  transform=plt.gca().transAxes, size=15,
                  horizontalalignment='right')
 fig.suptitle('Synthetic Double-Cigar Dataset', y=0.93, fontsize=22, fontweight='bold')
-plt.savefig('/results/cigar_pred.png', facecolor='white', bbox_inches = "tight", dpi=300)
+plt.savefig('/results/cigar_pred.png', bbox_inches = "tight", dpi=300)
 
 #%%
 # make boxplot of ARIs for cigar datasets
@@ -168,5 +168,5 @@ ax.set_title('ARIs for Different Clustering Algorithms', fontsize=20, fontweight
 ax.set_xlabel('')
 ax.set_ylabel('ARI', fontsize=20)
 ax.set_xticklabels(ax.get_xticklabels(), fontsize=20)
-plt.savefig('/results/cigar_aris_boxplot.png', facecolor='white', bbox_inches = "tight", dpi=300)
+plt.savefig('/results/cigar_aris_boxplot.png', bbox_inches = "tight", dpi=300)
 plt.show()

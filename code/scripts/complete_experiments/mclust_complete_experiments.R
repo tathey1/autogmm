@@ -47,19 +47,17 @@ k <- model$G
 bic <- max(model$BIC,na.rm=T)
 ari <- adjustedRandIndex(c,model$classification)
 
-png(paste('/results/mclust_clustering_dataset', dataset, '.png'))
+png(paste('/results/mclust_clustering_dataset', dataset, '.png', sep = ""))
 plot(first_dim,second_dim,col=colors[model$classification],pch=19,xlab='feature 1',ylab='feature 2',main='mclust clustering') 
-print(paste('Best model: ',combo))
-print(paste('Best k: ',k))
-print(paste('Best BIC: ',bic))
-print(paste('Best ARI: ',ari))
+print(paste('Best model: ',combo, sep = ""))
+print(paste('Best k: ', k, sep = ""))
+print(paste('Best BIC: ', bic, sep = ""))
+print(paste('Best ARI: ', ari, sep = ""))
 
-BIC <- mclustBIC(X,ks,verbose=FALSE, modelNames=modelNames)
-
-png(paste('/results/mclust_bicplot_dataset', dataset, '.png'))
-par(cex.axis=1.2,cex.lab=1.5,pty='s')
-plot(BIC)
-title(main='b) mclust')
-
-
-
+if (dataset==0) {
+  BIC <- mclustBIC(X,ks,verbose=FALSE, modelNames=modelNames)
+  png(paste('/results/mclust_bicplot_dataset', dataset, '.png', sep = ""))
+  par(cex.axis=1.2,cex.lab=1.5,pty='s')
+  plot(BIC)
+  title(main='b) mclust')
+}
