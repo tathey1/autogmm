@@ -7,7 +7,7 @@ random.seed(0)
 # path = '/code/scripts/option_runtimes/data/'
 path = '/results/'
 
-# run the following code to generate simulation data
+# run the following code to generate simulation data (need to set the "exponeent" correctly, see below)
 # python scripts/option_runtimes/make_data.py -o /results/
 
 base = 40
