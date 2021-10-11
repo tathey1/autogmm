@@ -230,7 +230,7 @@ class AutoGMMCluster(BaseCluster):
         selection_criteria="bic",
         max_agglom_size=2000,
         n_jobs=None,
-        init_params='kmeans',
+        init_params="kmeans",
     ):
         if isinstance(min_components, int):
             if min_components <= 0:
