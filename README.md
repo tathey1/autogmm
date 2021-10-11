@@ -84,4 +84,4 @@ We appreciate detailed bug reports and feature requests (though we appreciate pu
 # Citing `AutoGMM`
 If you find `AutoGMM` useful in your work, please cite the algorithm via the [AutoGMM paper](https://arxiv.org/abs/1909.02688)
 
-> Athey, T. L., Pedigo, B. D., Liu, T., & Vogelstein, J. T. (2019). AutoGMM: Automatic and Hierarchical Gaussian Mixture Modeling in Python. arXiv preprint arXiv:1909.02688.
+> Athey, T. L., Liu, T., Pedigo, B. D., & Vogelstein, J. T. (2021). AutoGMM: Automatic and Hierarchical Gaussian Mixture Modeling in Python. arXiv preprint arXiv:1909.02688.
